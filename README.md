@@ -1,3 +1,6 @@
+# Features added
+* Read backend support
+
 # terraform-config-inspect
 
 This repository contains a helper library for extracting high-level metadata
