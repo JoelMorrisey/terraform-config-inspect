@@ -50,6 +50,10 @@ var terraformBlockSchema = &hcl.BodySchema{
 		{
 			Type: "required_providers",
 		},
+		{
+			Type:       "backend",
+			LabelNames: []string{"name"},
+		},
 	},
 }
 
@@ -60,6 +64,26 @@ var providerConfigSchema = &hcl.BodySchema{
 		},
 		{
 			Name: "alias",
+		},
+	},
+}
+
+var backendConfigSchema = &hcl.BodySchema{
+	Attributes: []hcl.AttributeSchema{
+		{
+			Name: "bucket",
+		},
+		{
+			Name: "key",
+		},
+		{
+			Name: "region",
+		},
+		{
+			Name: "dynamodb_table",
+		},
+		{
+			Name: "path",
 		},
 	},
 }

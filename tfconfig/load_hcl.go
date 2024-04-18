@@ -103,7 +103,14 @@ func LoadModuleFromFile(file *hcl.File, mod *Module) hcl.Diagnostics {
 							mod.RequiredProviders[name].VersionConstraints = append(mod.RequiredProviders[name].VersionConstraints, req.VersionConstraints...)
 						}
 					}
+				case "backend":
+					reqs, reqsDiags := DecodeBackendBlock(innerBlock)
+					diags = append(diags, reqsDiags...)
+					mod.Backend = reqs
 				}
+			}
+			if mod.Backend == nil {
+				mod.Backend = DefaultBackendBlock(mod.Path)
 			}
 
 		case "variable":

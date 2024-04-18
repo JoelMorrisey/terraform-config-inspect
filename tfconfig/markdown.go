@@ -48,6 +48,20 @@ Core Version Constraints:
 * {{ tt . }}
 {{- end}}{{end}}
 
+Backend configuration:
+* Type: {{ tt .Backend.Type }}
+{{- if .Backend.S3 }}
+* Bucket: {{ tt .Backend.S3.Bucket }}
+* Key: {{ tt .Backend.S3.Key }}
+* Region: {{ tt .Backend.S3.Region }}
+{{- if .Backend.S3.DynamodbTable }}
+* DynamodbTable: {{ tt .Backend.S3.DynamodbTable }}
+{{end}}
+{{end}}
+{{- if .Backend.Local }}
+* Path: {{ tt .Backend.Local.Path }}
+{{end}}
+
 {{- if .RequiredProviders}}
 
 Provider Requirements:
